@@ -1,6 +1,8 @@
 {
   "name": "my-note-printer",
   "version": "1.0.2",
+  "description": "A simple note printing application built with Electron",
+  "author": "Jay Antoney",
   "main": "src/main/main.js",
   "scripts": {
     "start": "electron .",
