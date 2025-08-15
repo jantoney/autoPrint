@@ -7,14 +7,18 @@
   "scripts": {
     "start": "electron .",
     "dist": "electron-builder --win",
+    "dist:dev": "cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --win --dir",
     "version:patch": "npm version patch && git push origin main && git push --tags",
     "version:minor": "npm version minor && git push origin main && git push --tags",
     "version:major": "npm version major && git push origin main && git push --tags"
   },
   "dependencies": {
+    "conf": "10.2.0",
+    "dot-prop": "6.0.1",
     "electron-store": "^8.1.0"
   },
   "devDependencies": {
+    "cross-env": "^10.0.0",
     "electron": "^29.0.0",
     "electron-builder": "^24.6.0"
   },
@@ -23,13 +27,24 @@
     "productName": "My Note Printer",
     "files": [
       "src/**/*",
-      "package.json"
+      "package.json",
+      "node_modules/**/*"
     ],
-    "asar": true,
+    "asar": false,
     "win": {
       "target": [
-        "nsis",
-        "zip"
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
       ],
       "artifactName": "${productName}-v${version}-${arch}.${ext}"
     },

@@ -40,7 +40,7 @@ It sounds like the printer just has to have `ESC/POS` compatibility. Which mine 
 ### Prerequisites
 
 - Node.js (LTS version)
-- pnpm package manager
+- npm package manager (comes with Node.js)
 - Git
 
 ### Installation
@@ -51,17 +51,20 @@ git clone https://github.com/jantoney/autoPrint.git
 cd autoPrint
 
 # Install dependencies
-pnpm install
+npm install
 
 # Start the development server
-pnpm start
+npm start
 ```
 
 ### Building the Application
 
 ```bash
 # Build for Windows
-pnpm run dist
+npm run dist
+
+# Build for development (faster, unpacked)
+npm run dist:dev
 ```
 
 This will create distributable files in the `dist/` directory, including:
@@ -81,13 +84,13 @@ The application uses semantic versioning (MAJOR.MINOR.PATCH). To create a new re
 
 ```bash
 # For bug fixes (1.0.0 → 1.0.1)
-pnpm run version:patch
+npm run version:patch
 
 # For new features (1.0.0 → 1.1.0)
-pnpm run version:minor
+npm run version:minor
 
 # For breaking changes (1.0.0 → 2.0.0)
-pnpm run version:major
+npm run version:major
 ```
 
 These commands will:

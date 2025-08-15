@@ -16,15 +16,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "lts/*"
-
-      - uses: pnpm/action-setup@v2
-        with:
-          version: latest
+          cache: "npm"
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm ci
 
       - name: Build and publish
-        run: pnpm run dist
+        run: npm run dist
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
