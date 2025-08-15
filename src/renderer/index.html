@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>My Note Printer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="title-bar">
+        <h1>My Note Printer</h1>
+        <div class="title-bar-buttons">
+            <button id="settingsBtn" class="settings-btn">⚙️</button>
+            <button id="closeBtn" class="close-btn">×</button>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div id="printerCaption">No printer selected</div>
+        
+        <div class="text-section">
+            <div class="input-container">
+                <div class="input-label">Your Note:</div>
+                <textarea id="noteInput" spellcheck="true" maxlength="300"
+                    placeholder="Type your note..."></textarea>
+                <div class="char-counter" id="charCounter">0 chars, 0 lines</div>
+            </div>
+            
+            <div class="preview-container">
+                <div class="preview-label">Printer Preview (13 chars/line):</div>
+                <div id="printerPreview" class="printer-preview"></div>
+            </div>
+        </div>
+        
+        <div id="wordWarning" class="warning"></div>
+        
+        <button id="printBtn" disabled class="primary-btn">Print</button>
+        
+        <div id="dueDateButtons" class="due-date-buttons">
+            <label id="dueDateLabel">Due Date:</label>
+            <div class="button-row">
+                <button id="dueDatePlus1" type="button" class="due-date-btn">+1d</button>
+                <button id="dueDatePlus7" type="button" class="due-date-btn">+7d</button>
+                <button id="dueDatePlus14" type="button" class="due-date-btn">+14d</button>
+                <button id="dueDateOther" type="button" class="due-date-btn">OTHER</button>
+                <button id="dueDateClear" type="button" class="due-date-btn clear-btn">Clear</button>
+            </div>
+        </div>
+    </div>
+
+    <dialog id="settingsModal">
+        <h2>Settings</h2>
+        <label for="printerSelect">Printer:</label>
+        <select id="printerSelect"></select>
+        <div class="setting-row">
+            <label>
+                <input type="checkbox" id="silentModeToggle"> Silent Printing (no dialog)
+            </label>
+        </div>
+        <div class="setting-row">
+            <label for="extraSpaceTop">Extra Space Top (newlines):</label>
+            <input type="number" id="extraSpaceTop" min="0" max="20" value="2" step="1">
+        </div>
+        <div class="setting-row">
+            <label for="extraSpaceBottom">Extra Space Bottom (newlines):</label>
+            <input type="number" id="extraSpaceBottom" min="0" max="20" value="3" step="1">
+        </div>
+        <div class="actions">
+            <button id="testPrintBtn">Test Print</button>
+            <button id="saveSettingsBtn">Save</button>
+            <button id="closeSettingsBtn">Close</button>
+        </div>
+    </dialog>
+
+    <dialog id="dueDateModal">
+        <h2>Custom Due Date</h2>
+        <div class="setting-row">
+            <label for="daysInput">Number of days from today:</label>
+            <input type="number" id="daysInput" min="1" max="365" value="1" step="1">
+        </div>
+        <div class="actions">
+            <button id="confirmDaysBtn">Set Due Date</button>
+            <button id="cancelDaysBtn">Cancel</button>
+        </div>
+    </dialog>
+
+    <script src="renderer.js"></script>
+</body>
+
+</html>

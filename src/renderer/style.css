@@ -1,0 +1,432 @@
+body {
+    font-family: system-ui, 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+}
+
+.title-bar {
+    background: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    -webkit-app-region: drag;
+}
+
+.title-bar h1 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.title-bar-buttons {
+    display: flex;
+    gap: 10px;
+    -webkit-app-region: no-drag;
+}
+
+.settings-btn {
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-btn:hover {
+    background: #545b62;
+}
+
+.close-btn {
+    background: #ff5f56;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    background: #ff3b30;
+}
+
+.main-content {
+    flex: 1;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: calc(100% - 40px);
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+    overflow: hidden;
+}
+
+#printerCaption {
+    font-size: 14px;
+    color: #666;
+    padding: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+}
+
+.text-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+}
+
+.input-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #495057;
+    text-align: left;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.4;
+    padding: 8px;
+    box-sizing: border-box;
+    resize: none;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    background: #fff;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    flex-shrink: 0;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.preview-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.preview-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #495057;
+    text-align: left;
+}
+
+.printer-preview {
+    width: 100%;
+    height: 300px;
+    font-family: 'Courier New', monospace;
+    font-size: 53px;
+    line-height: 1.3;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 2px solid #28a745;
+    border-radius: 6px;
+    background: #f8f9fa;
+    white-space: pre-wrap;
+    overflow-y: auto;
+    color: #495057;
+    word-break: break-all;
+    flex-shrink: 0;
+}
+
+.char-counter {
+    font-size: 12px;
+    color: #6c757d;
+    text-align: right;
+    margin-top: 5px;
+}
+
+.primary-btn {
+    padding: 12px 30px;
+    font-size: 18px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.primary-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.primary-btn:hover:not(:disabled) {
+    background: #0056b3;
+}
+
+.warning {
+    color: #dc3545;
+    font-size: 14px;
+    min-height: 1.2em;
+    font-weight: bold;
+}
+
+.due-date-buttons {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.due-date-buttons label {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #495057;
+}
+
+.button-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.due-date-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    background: #17a2b8;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    min-width: 70px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.due-date-btn:hover {
+    background: #138496;
+    transform: translateY(-1px);
+}
+
+.due-date-btn.selected {
+    background: #28a745;
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+.due-date-btn.clear-btn {
+    background: #dc3545;
+}
+
+.due-date-btn.clear-btn:hover {
+    background: #c82333;
+}
+
+.due-date-btn.disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.due-date-btn.disabled:hover {
+    background: #6c757d;
+    transform: none;
+}
+
+dialog {
+    border: none;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    max-width: 400px;
+}
+
+dialog h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+dialog label {
+    font-size: 14px;
+    color: #495057;
+}
+
+dialog select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+dialog .setting-row {
+    margin: 15px 0;
+    text-align: left;
+}
+
+dialog .setting-row label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+dialog .setting-row input[type="number"] {
+    width: 80px;
+    padding: 4px 8px;
+    margin-left: auto;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+dialog .actions {
+    margin-top: 20px;
+    text-align: right;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+dialog button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#testPrintBtn {
+    background: #ffc107;
+    color: #212529;
+}
+
+#testPrintBtn:hover {
+    background: #e0a800;
+}
+
+#saveSettingsBtn {
+    background: #28a745;
+    color: white;
+}
+
+#saveSettingsBtn:hover {
+    background: #218838;
+}
+
+#closeSettingsBtn {
+    background: #6c757d;
+    color: white;
+}
+
+#closeSettingsBtn:hover {
+    background: #545b62;
+}
+
+/* Due date modal specific styles */
+#confirmDaysBtn {
+    background: #28a745;
+    color: white;
+}
+
+#confirmDaysBtn:hover {
+    background: #218838;
+}
+
+#cancelDaysBtn {
+    background: #6c757d;
+    color: white;
+}
+
+#cancelDaysBtn:hover {
+    background: #545b62;
+}
+
+#daysInput {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+/* Notification styles */
+.notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: none;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    max-width: 300px;
+    text-align: center;
+    z-index: 2147483647 !important;
+    font-family: system-ui, 'Segoe UI', Arial, sans-serif;
+}
+
+.notification.success {
+    border-left: 4px solid #28a745;
+}
+
+.notification.error {
+    border-left: 4px solid #dc3545;
+}
+
+.notification p {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 14px;
+}
+
+.notification button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.notification button:hover {
+    background: #0056b3;
+}
+
+.notification-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 2147483646 !important;
+}

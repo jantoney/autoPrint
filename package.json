@@ -1,0 +1,41 @@
+{
+  "name": "my-note-printer",
+  "version": "1.0.1",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win",
+    "version:patch": "npm version patch && git push origin main && git push --tags",
+    "version:minor": "npm version minor && git push origin main && git push --tags",
+    "version:major": "npm version major && git push origin main && git push --tags"
+  },
+  "dependencies": {
+    "electron-store": "^8.1.0"
+  },
+  "devDependencies": {
+    "electron": "^29.0.0",
+    "electron-builder": "^24.6.0"
+  },
+  "build": {
+    "appId": "com.example.mynoteprinter",
+    "productName": "My Note Printer",
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "artifactName": "${productName}-v${version}-${arch}.${ext}"
+    },
+    "directories": {
+      "buildResources": "build"
+    },
+    "publish": [
+      "github"
+    ]
+  }
+}
