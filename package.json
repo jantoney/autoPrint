@@ -37,5 +37,8 @@
     "publish": [
       "github"
     ]
+  },
+  "volta": {
+    "node": "22.18.0"
   }
 }
